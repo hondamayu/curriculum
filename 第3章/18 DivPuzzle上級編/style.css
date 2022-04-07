@@ -1,0 +1,64 @@
+@charset "tuf-8";
+
+.wrapper {
+  width: 400px;
+}
+
+.header {
+  height: 100px;
+  background: #ff0000;
+}
+
+.nav {
+  background: #ffffff;
+  position: relative;
+  top: 20px;
+  right: 20px;
+  float: right;  
+}
+
+.purple {
+  width: 40px;
+  height: 40px;
+  background: #a9004b;
+  margin: 10px;
+  float: left;
+}
+
+.left {
+  width: 150px;
+  height: 250px;
+  background: #00ff51;
+  float: left;
+}
+
+.right {
+  width: 250px;
+  height: 250px;
+  background: #8c2727;
+  float: left;
+}
+
+.list {
+  padding: 40px;
+}
+
+.orange {
+  width: 140px;
+  height: 40px;
+  background: #ff863f;
+  margin: 0 0 10px 0;
+  border: 5px solid;
+  border-color: #ffffff;
+}
+
+.footer {
+  height: 100px;
+  background: #fff700;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}

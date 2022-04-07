@@ -1,0 +1,77 @@
+#ブランチ
+- 変更の履歴を分岐して記録してくためのものです。
+  分岐したブランチは他のブランチの影響を受けない為、同じリポジトリ中で複数の変更を同時に進めていくことができます。
+
+  ブランチの一覧を表示したい
+  → $ git branch
+  ブランチを作成したい
+  → $ git branch <branchname>
+  ブランチ名を変更したい
+  → $ git branch -m <oldbranch> <newbranch>
+  ブランチを削除したい
+  → $ git branch -d <branchname>
+  ブランチを切り替えたい
+  → $ git checkout <branch>
+  ブランチをマージしたい
+  → $ git merge <branch>
+
+#プル
+- ブランチを切って作業を行っている途中でdevelop環境が更新されることがあります。
+  その環境を自分の環境へ反映させる時にプルします。自分が新規実装している箇所には影響はありません。
+  $ git pull [リポジトリ] [ブランチ]
+
+#コンフリクト
+- develop環境が更新され、プルした時発生するバージョンの衝突です。
+  CONFLICT (content): Merge conflict in sample.txt
+  Automatic merge failed; fix conflicts and then commit the result.
+
+#マージ
+- ブランチを切って行った作業で発生した差分を開発環境へ合体させる意味です。
+  $ git merge <commit>
+
+#プルリクエスト
+- ブランチを切ってプッシュした際、開発環境にいきなりマージするのは危険です。
+  どのファイルを変更したのかの確認、マージ権限を持っている方にプルをお願いすることプルリクエストと言います。
+  $ git pull-request
+
+#フォーク
+- 他者のリモートリポジトリを自分のリモートリポジトリへ複製する時に使います。
+  他者のリモートリポジトリを複製する時は1度自分のリモートリポジトリへフォークし、そこから自分のローカルリポジトリへ複製することも可能で、プッシュしても自分のリモートリポジトリへプッシュされるので、元のリポジトリを変更することなく自分の環境として開発できます。
+  $ git clone https://github.com/YOUR-USERNAME/Spoon-Knife
+  $ git remote -v
+  $ git remote add upstream https://github.com/octocat/Spoon-Knife.git
+
+#スタッシュ
+- ブランチを複数切って作業している時にAのブランチからBのブランチに変更して作業しなくてはいけない時などがあります。
+  その時にAのブランチで行った変更を一時的に避難させたい時などに使います。
+  これによりまたBのブランチから戻ってきた時にそこから反映させて作業を進めることができます。
+
+  スタッシュする
+  → $ git stash
+  メッセージをつけてスタッシュする
+  → $ git stash save "message"
+  スタッシュしたリストを表示
+  → $ git stash list
+  N番目にスタッシュしたファイルの一覧を表示
+  → $ git stash show stash@{N}
+  N番目にスタッシュしたファイルの変更差分を表示
+  → $ git stash show -p stash@{N}
+  スタッシュは適用し、適用したスタッシュを削除
+  → $ git stash pop # 最新のスタッシュを適用し、削除
+    $ git stash pop stash@{N} # N番目のスタッシュを適用し、削除
+  スタッシュは適用し、適用したスタッシュを残す
+  → $ git stash apply # 最新のスタッシュを適用し、残す
+    $ git stash apply stash@{N} # N番目のスタッシュを適用し、残す
+  N番目のスタッシュを削除する
+  → git stash drop # 最新のスタッシュを削除 
+    git stash drop stash@{N} # N番目のスタッシュを削除
+  unstageファイルを全てスタッシュ
+  → git stash -k 
+  unstageファイルも含めて全てスタッシュ
+  → git stash -u 
+  スタッシュを全削除する
+  → git stash clear     
+
+#Diff
+- 変更前と変更後を比較してなんのファイルが変更されたのか、そのファイル中のどこが変更されたのかを確認できます。
+  $ git diff [変更前のコミット識別子]..[変更後のコミット識別子]

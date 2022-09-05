@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>
+      <script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      </script>
+    </title>
+  </head>
+  <body>
+    <button id="sample">jQuery</button>
+    <script>
+      $(function () {
+        $("#sample").on('clicl', function() {
+          const result = "ボタンが押されました！";
+          console.log(result);
+        });
+      });
+    </script>
+  </body>
+</html>
